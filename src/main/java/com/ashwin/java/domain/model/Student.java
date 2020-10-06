@@ -53,6 +53,8 @@ public class Student {
 
     private Vehicle vehicle;
 
+    private boolean isMarried;
+
     public Student() {
     }
 
@@ -142,6 +144,16 @@ public class Student {
         this.vehicle = vehicle;
     }
 
+    @JsonGetter("married")
+    public boolean isMarried() {
+        return isMarried;
+    }
+
+    @JsonSetter("married")
+    public void setMarried(boolean married) {
+        isMarried = married;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -155,6 +167,7 @@ public class Student {
                 ", custom='" + custom + '\'' +
                 ", extra='" + extra + '\'' +
                 ", vehicle=" + vehicle +
+                ", isMarried=" + isMarried +
                 '}';
     }
 }

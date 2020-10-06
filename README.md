@@ -32,6 +32,7 @@ curl --location --request POST 'http://localhost:8080/student/reflect' \
     "vehicle": {
         "type": "car",
         "name": "Tata"
-    }
+    },
+    "married": false
 }'
 ```
