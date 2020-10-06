@@ -27,12 +27,15 @@ curl --location --request POST 'http://localhost:8080/student/reflect' \
         "message": "json"
     },
     "request": "{\"scheme\":\"http\"}",
-    "custom": "reader, writer, artist",
     "extra": "Woohoo",
     "vehicle": {
         "type": "car",
         "name": "Tata"
     },
-    "married": false
+    "married": false,
+    "custom": {
+        "department": "BTech",
+        "year": 2
+    }
 }'
 ```

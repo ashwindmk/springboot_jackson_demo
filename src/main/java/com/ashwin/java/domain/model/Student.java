@@ -2,6 +2,8 @@ package com.ashwin.java.domain.model;
 
 import com.fasterxml.jackson.annotation.*;
 
+import java.util.HashMap;
+
 // Default order: name, email, response, student_id
 // Expected order: response, student_id, and then the rest...
 @JsonPropertyOrder({"response", "student_id"})
@@ -43,7 +45,7 @@ public class Student {
     @JsonRawValue
     private String response;
 
-    private String custom;
+    private String notes;
 
     /**
      * This extra field should neither be accepted in request nor sent in response.
@@ -54,6 +56,8 @@ public class Student {
     private Vehicle vehicle;
 
     private boolean isMarried;
+
+    private HashMap<String, Object> custom = new HashMap<>();
 
     public Student() {
     }
@@ -120,12 +124,12 @@ public class Student {
         this.response = response;
     }
 
-    public String getCustom() {
-        return custom;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setCustom(String custom) {
-        this.custom = custom;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public String getExtra() {
@@ -154,6 +158,19 @@ public class Student {
         isMarried = married;
     }
 
+    /**
+     * All key-value pairs in custom should be direct properties of Student
+     */
+    @JsonAnyGetter
+    public HashMap<String, Object> getCustom() {
+        return custom;
+    }
+
+    @JsonAnySetter
+    public void setCustom(HashMap<String, Object> custom) {
+        this.custom.putAll(custom);
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -164,10 +181,11 @@ public class Student {
                 ", minor=" + minor +
                 ", request='" + request + '\'' +
                 ", response='" + response + '\'' +
-                ", custom='" + custom + '\'' +
+                ", notes='" + notes + '\'' +
                 ", extra='" + extra + '\'' +
                 ", vehicle=" + vehicle +
                 ", isMarried=" + isMarried +
+                ", custom=" + custom +
                 '}';
     }
 }
