@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -25,6 +26,7 @@ public class StudentController {
 
         student.setResponse("{\"status\": 200, \"message\": \"success\"}");
         student.setExtra("Extra data");
+        student.setBirthDate(new Date());
         System.out.println("Reflect Student: " + student);
 
         ObjectMapper objectMapper = new ObjectMapper();

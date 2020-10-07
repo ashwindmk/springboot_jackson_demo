@@ -2,6 +2,7 @@ package com.ashwin.java.domain.model;
 
 import com.fasterxml.jackson.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 
 // Default order: name, email, response, student_id
@@ -58,6 +59,9 @@ public class Student {
     private boolean isMarried;
 
     private HashMap<String, Object> custom = new HashMap<>();
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date birthDate;
 
     public Student() {
     }
@@ -171,6 +175,14 @@ public class Student {
         this.custom.putAll(custom);
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -186,6 +198,7 @@ public class Student {
                 ", vehicle=" + vehicle +
                 ", isMarried=" + isMarried +
                 ", custom=" + custom +
+                ", birthDate=" + birthDate +
                 '}';
     }
 }
